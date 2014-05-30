@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{d4bf4688-3407-42c8-bad7-93d2e70980be}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{ccec3079-0529-413b-a7e2-3e6afe7b9361}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{e0f0f346-7a0c-4e6b-b603-ecf0a4a73781}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CrystalCraze.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainMenuView.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameView.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainMenuView.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameView.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\about.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\aboutbg.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\aboutdown.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\aboutfade.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\background.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bomb.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bombexplo.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bombexploinner.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bombhi.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bomblight.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\clickme.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\clickmedown.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\crystals.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\done.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\donedown.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\go.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\header.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\hint.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ic_launcher.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\logo.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\p0.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\p1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\p2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\p3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\p4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\pause.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\pausedown.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\play.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\playdown.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\scorefont.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\shimmer.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sparkle.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\timer.png">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
