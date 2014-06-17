@@ -29,10 +29,16 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainMenuView.h">
+    <ClInclude Include="..\Classes\MainMenuScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="GameView.h">
+    <ClInclude Include="GameScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="GemManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectManager.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="Gem.h">
@@ -46,10 +52,16 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MainMenuView.cpp">
+    <ClCompile Include="..\Classes\MainMenuScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="GameView.cpp">
+    <ClCompile Include="GameScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="GemManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="Gem.cpp">

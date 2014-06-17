@@ -1,5 +1,5 @@
-#include "MainMenuView.h"
-#include "GameView.h"
+#include "MainMenuScene.h"
+#include "GameScene.h"
 #include <string>
 #include <cmath>
 #include <cstdlib>
@@ -7,7 +7,7 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-CCScene* MainMenuView::scene()
+CCScene* MainMenuScene::scene()
 {
     CCScene * scene = NULL;
     do 
@@ -17,7 +17,7 @@ CCScene* MainMenuView::scene()
         CC_BREAK_IF(! scene);
 
         // 'layer' is an autorelease object
-        MainMenuView *layer = MainMenuView::create();
+        MainMenuScene *layer = MainMenuScene::create();
         CC_BREAK_IF(! layer);
 
         // add layer as a child to scene
@@ -28,7 +28,7 @@ CCScene* MainMenuView::scene()
     return scene;
 }
 
-MainMenuView::MainMenuView()
+MainMenuScene::MainMenuScene()
 {
 	for (int i = 0; i < 5; i++)
 	{
@@ -42,12 +42,12 @@ MainMenuView::MainMenuView()
 	starname[4] = "p4.png";
 }
 
-MainMenuView::~MainMenuView()
+MainMenuScene::~MainMenuScene()
 {
 }
 
 // on "init" you need to initialize your instance
-bool MainMenuView::init()
+bool MainMenuScene::init()
 {
     bool bRet = false;
     do 
@@ -66,38 +66,13 @@ bool MainMenuView::init()
 		size = CCDirector::sharedDirector()->getWinSize();
 
 		// 加载背景图片
-		CCSprite* background = CCSprite::create("background.png", CCRect(0, 0, size.width, size.height));
-		CC_BREAK_IF(! background);
-		background->setPosition(CCPoint(size.width / 2, size.height / 2));
-		this->addChild(background);
+		loadBackground();
 
 		// 加载文字
-		CCSprite* logo = CCSprite::create("logo.png");
-		CC_BREAK_IF(! logo);
-		logo->setPosition(CCPoint(size.width / 2, size.height * 4 / 5));
-		this->addChild(logo, 1);
+		loadText();
 
 		// 加载开始和关于按钮
-		CCMenuItemImage *pplay = CCMenuItemImage::create(
-			"play.png",
-			"playdown.png",
-			this,
-			menu_selector(MainMenuView::menuPlayCallback));
-		CC_BREAK_IF(! pplay);
-		pplay->setPosition(CCPoint(size.width / 2, size.height / 2 - 20));
-
-		CCMenuItemImage *pabout = CCMenuItemImage::create(
-			"about.png",
-			"aboutdown.png",
-			this,
-			menu_selector(MainMenuView::menuAboutCallback));
-		CC_BREAK_IF(! pabout);
-		pabout->setPosition(CCPoint(size.width / 2, size.height / 4 - 20));
-
-		CCMenu* pMenu = CCMenu::create(pplay, pabout, NULL);
-		pMenu->setPosition(CCPointZero);
-		CC_BREAK_IF(! pMenu);
-		this->addChild(pMenu, 1);
+		loadButton();
 
 		// 显示分数
 		showNumber();
@@ -114,8 +89,46 @@ bool MainMenuView::init()
     return bRet;
 }
 
+// 加载背景图片
+void MainMenuScene::loadBackground()
+{
+	CCSprite* background = CCSprite::create("background.png", CCRect(0, 0, size.width, size.height));
+	background->setPosition(CCPoint(size.width / 2, size.height / 2));
+	this->addChild(background);
+}
+
+// 加载文字
+void MainMenuScene::loadText()
+{
+	CCSprite* logo = CCSprite::create("logo.png");
+	logo->setPosition(CCPoint(size.width / 2, size.height * 4 / 5));
+	this->addChild(logo, 1);
+}
+
+// 加载开始和关于按钮
+void MainMenuScene::loadButton()
+{
+	CCMenuItemImage *pplay = CCMenuItemImage::create(
+		"play.png",
+		"playdown.png",
+		this,
+		menu_selector(MainMenuScene::menuPlayCallback));
+	pplay->setPosition(CCPoint(size.width / 2, size.height / 2 - 20));
+
+	CCMenuItemImage *pabout = CCMenuItemImage::create(
+		"about.png",
+		"aboutdown.png",
+		this,
+		menu_selector(MainMenuScene::menuAboutCallback));
+	pabout->setPosition(CCPoint(size.width / 2, size.height / 4 - 20));
+
+	CCMenu* pMenu = CCMenu::create(pplay, pabout, NULL);
+	pMenu->setPosition(CCPointZero);
+	this->addChild(pMenu,1);
+}
+
 // 显示分数
-void MainMenuView::showNumber()
+void MainMenuScene::showNumber()
 {
 	int result = CCUserDefault::sharedUserDefault()->getIntegerForKey("score");
 	char temp[9];
@@ -126,10 +139,14 @@ void MainMenuView::showNumber()
 }
 
 // 更新星星位置
-void MainMenuView::update(float dt)
+void MainMenuScene::update(float dt)
 {
-	// 获取屏幕尺寸
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	updateGem();
+}
+
+// 更新星星位置
+void MainMenuScene::updateGem()
+{
 	for (int i = 0; i < 5; i++)
 	{
 		if (star[i] == NULL)
@@ -146,23 +163,24 @@ void MainMenuView::update(float dt)
 		}
 		if (star[i]->getPositionX() >= size.width && star[i]->getPositionY() >= size.height)
 		{
+			star[i]->stopAllActions();
 			this->removeChildByTag(star[i]->getTag());
 			star[i] = NULL;
 		}
 	}
 }
 
-void MainMenuView::menuPlayCallback(CCObject* pSender)
+void MainMenuScene::menuPlayCallback(CCObject* pSender)
 {
 	// 播放点击音乐
 	SimpleAudioEngine::sharedEngine()->playEffect("raw/click.wav");
 
     // 转换到游戏界面
-    CCScene* gameView = GameView::scene();
+    CCScene* gameView = GameScene::scene();
 	CCDirector::sharedDirector()->replaceScene(gameView);
 }
 
-void MainMenuView::menuAboutCallback(CCObject* pSender)
+void MainMenuScene::menuAboutCallback(CCObject* pSender)
 {
 	// 播放点击音乐
 	SimpleAudioEngine::sharedEngine()->playEffect("raw/click.wav");

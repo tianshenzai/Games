@@ -1,5 +1,5 @@
-#ifndef __MainMenuView_H__
-#define __MainMenuView_H__
+#ifndef __MainMenuScene_H__
+#define __MainMenuScene_H__
 
 #include "cocos2d.h"
 
@@ -7,7 +7,7 @@
 
 #include "SimpleAudioEngine.h"
 
-class MainMenuView : public cocos2d::CCLayer
+class MainMenuScene : public cocos2d::CCLayer
 {
 private:
 	cocos2d::CCSprite* star[5];
@@ -15,8 +15,8 @@ private:
 	cocos2d::CCSize size;
 
 public:
-	MainMenuView();
-	~MainMenuView();
+	MainMenuScene();
+	~MainMenuScene();
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
@@ -29,14 +29,26 @@ public:
 
 	void menuAboutCallback(cocos2d::CCObject* pSender);
 
-	// 更新星星位置
+	// 加载背景图片
+	void loadBackground();
+
+	// 加载文字
+	void loadText();
+
+	// 加载开始和关于按钮
+	void loadButton();
+
+	// 更新
 	void update(float dt);
+
+	// 更新星星位置
+	void updateGem();
 
 	// 显示分数
 	void showNumber();
 
     // implement the "static node()" method manually
-    CREATE_FUNC(MainMenuView);
+    CREATE_FUNC(MainMenuScene);
 };
 
-#endif  // __MainMenuView_H__
+#endif  // __MainMenuScene_H__
